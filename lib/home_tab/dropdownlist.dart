@@ -16,6 +16,17 @@ var items = [
   'payments',
   'Deposits',
 ];
+String? value;
+
+  DropdownMenuItem <String> buildMenuItem(String item) => 
+  DropdownMenuItem(
+      value: item,
+      child: Text(item,
+          style: TextStyle(fontSize: 20, color: Colors.white)
+
+      )
+  )
+  ;
 
   @override
   Widget build(BuildContext context) {
@@ -27,23 +38,29 @@ var items = [
       ),
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 20),
+
         child: DropdownButton(
+          dropdownColor: AppColors.mainColorLight,
 
 
               underline: SizedBox(),
-              icon: Icon(Icons.keyboard_arrow_down, color: Colors.white),
+              icon: Align(
+                alignment: Alignment.centerRight,
+                  child: Icon(Icons.keyboard_arrow_down, color: Colors.white)),
 
               iconSize: 30,
               //value:  dropdownvalue,
-              items: items.map((String items) {
-                return DropdownMenuItem(
-                  value: items,
-                  child: Text(items),
-                );
-              }).toList(),
-              onChanged: (String? newValue) {
+              items: items.map(buildMenuItem).toList(),
+            // {
+            //     return DropdownMenuItem(
+            //       value: items,
+            //       child: Text(items),
+            //     );
+            //   }).toList(),
+          value: value,
+              onChanged: (value) {
                 setState(() {
-                  dropdownvalue = newValue!;
+                  this.value= value as String?;
                 });
               },
               hint: Text(

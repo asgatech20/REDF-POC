@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:redf/constants/app_colors.dart';
 import 'package:redf/home_tab/home_tab.dart';
+import 'package:redf/home_tab/sliver.dart';
 import 'package:redf/profile_tab/profile_tab.dart';
 import 'package:redf/temp/mycontracts.dart';
 import 'package:redf/temp/orders.dart';
@@ -15,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 4;
   final screens = [
-    const HomeTab(),
+    const sliver(),
     const services(),
     const Contracts(),
     const orders(),
