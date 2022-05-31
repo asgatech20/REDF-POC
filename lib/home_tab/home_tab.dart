@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:redf/constants/widgets.dart';
 import 'package:redf/constants/app_colors.dart';
 import 'dropdownlist.dart';
 
@@ -18,11 +16,11 @@ class _HomeTabState extends State<HomeTab> {
      // extendBodyBehindAppBar: true,
       backgroundColor: AppColors.appBackground,
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
         image:   DecorationImage(image: AssetImage('assets/background2.png'),fit: BoxFit.fill)
 
         ),
-        padding: EdgeInsets.only(bottom: 40),
+        padding: const EdgeInsets.only(bottom: 40),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -40,32 +38,28 @@ class _HomeTabState extends State<HomeTab> {
                         margin: const EdgeInsets.only(left: 10,right: 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                                child:const DefaultTextStyle(
-                                  style: TextStyle(fontSize: 18),
-                                  child: Text('Hello, UserData.name'),
-                                )   ),
-                            Container(
-                                child:const DefaultTextStyle(
-                                  style: TextStyle(fontSize: 12),
-                                  child: Text('Thu. 25 Sep, 2022'),
-                                )   ),
+                          children: const [
+                             DefaultTextStyle(
+                              style: TextStyle(fontSize: 18),
+                              child: Text('Hello, UserData.name'),
+                            ),
+                            DefaultTextStyle(
+                              style: TextStyle(fontSize: 12),
+                              child: Text('Thu. 25 Sep, 2022'),
+                            ),
                           ],
                         ),
                       ),
                     ],
                   ),
-                  Container(
-                    child: Image.asset('assets/notifications.png'),
-                  ),
+                  Image.asset('assets/notifications.png'),
                 ],
               ),
             ),
-            DropDownList(),
+            const DropDownList(),
             Container(
               height: 66,
-              margin: EdgeInsets.only(top: 15,right: 10, left: 10),
+              margin: const EdgeInsets.only(top: 15,right: 10, left: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15.0),
                 color: AppColors.mainColorLight,
@@ -102,7 +96,7 @@ class _HomeTabState extends State<HomeTab> {
                                 ),
                                 ]
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Row(
@@ -123,7 +117,7 @@ class _HomeTabState extends State<HomeTab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(right: 10),
+                        margin: const EdgeInsets.only(right: 10),
                         child: Row(
                          // mainAxisAlignment: MainAxisAlignment.start,
                           children: const [

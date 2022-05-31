@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:redf/constants/app_colors.dart';
 import 'package:redf/home_tab/home_tab.dart';
-import 'package:redf/home_tab/sliver.dart';
 import 'package:redf/profile_tab/profile_tab.dart';
 import 'package:redf/temp/mycontracts.dart';
 import 'package:redf/temp/orders.dart';
 import 'package:redf/temp/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 4;
   final screens = [
-    const sliver(),
+    const HomeTab(),
     const services(),
     const Contracts(),
     const orders(),
@@ -40,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
   }
   Widget buildCustomBottomNavBar(Size size) {
+    var tr = AppLocalizations.of(context)!;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -73,27 +74,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   iconSize: 25,
                   selectedItemColor: AppColors.mainColor,
                   type: BottomNavigationBarType.fixed,
-                  items: const [
-                    BottomNavigationBarItem(icon: ImageIcon(
+                  items:   [
+                    BottomNavigationBarItem(icon: const ImageIcon(
                       AssetImage("assets/ic_home.png"),
-                    ), label: 'Home',
+                    ), label: tr.home,
                     ),
                     BottomNavigationBarItem(
-                        icon: ImageIcon(
+                        icon: const ImageIcon(
                           AssetImage("assets/ic_services.png"),
-                        ), label: 'Services'),
+                        ), label: tr.services),
                     BottomNavigationBarItem(
-                        icon: ImageIcon(
+                        icon: const ImageIcon(
                           AssetImage("assets/ic_contracts.png"),
-                        ), label: 'My Contract'),
+                        ), label: tr.mycontract),
                     BottomNavigationBarItem(
-                        icon: ImageIcon(
+                        icon: const ImageIcon(
                           AssetImage("assets/ic_orders.png"),
-                        ), label: 'My Orders'),
+                        ), label: tr.myorders),
                     BottomNavigationBarItem(
-                        icon: ImageIcon(
+                        icon: const ImageIcon(
                           AssetImage("assets/ic_profile.png"),
-                        ), label: 'Profile'),
+                        ), label: tr.profile),
                   ],
                 ),
               ),
