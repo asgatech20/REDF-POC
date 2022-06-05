@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LanguageCubit extends Cubit<Locale> {
   LanguageCubit() : super(const Locale('en'));
 
-  void changeStartLang() async {
+  void updateAppLangFromStorage() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? langCode = prefs.getString('lang');
     if (langCode != null) {

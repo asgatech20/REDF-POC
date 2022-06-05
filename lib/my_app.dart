@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:redf/cubit/home_cubit.dart';
 import 'package:redf/cubit/language_cubit.dart';
 import 'package:redf/home/home_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -11,20 +12,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => LanguageCubit())
+        BlocProvider(create: (context) => LanguageCubit()),
+        BlocProvider(create: (context) => HomeCubit())
       ],
       child: BlocBuilder<LanguageCubit, Locale>(
         builder: (context, local) {
-          context.read<LanguageCubit>().changeStartLang();
+          context.read<LanguageCubit>().updateAppLangFromStorage();
           return MaterialApp(
-            // onGenerateTitle: (context) {
-            //   var t = AppLocalizations.of(context)!;
-            //   return t.appTitle;
-            // },
+            onGenerateTitle: (context) {
+              var tr = AppLocalizations.of(context)!;
+              return tr.apptitle;
+            },
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             locale: local,
-            home: const HomeScreen(),
+            home: HomeScreen(),
             initialRoute: '/',
           );
         },
