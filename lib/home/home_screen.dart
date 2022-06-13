@@ -1,53 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:redf/constants/app_colors.dart';
-import 'package:redf/home_tab/home_tab.dart';
-import 'package:redf/home_tab/sliver.dart';
-import 'package:redf/profile_tab/profile_tab.dart';
-import 'package:redf/temp/mycontracts.dart';
-import 'package:redf/temp/orders.dart';
-import 'package:redf/temp/services.dart';
+import 'package:redf/cubit/home_cubit/home_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  HomeScreen({Key? key}) : super(key: key);
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-class _HomeScreenState extends State<HomeScreen> {
-  int currentIndex = 4;
-  final screens = [
-    const sliver(),
-    const services(),
-    const Contracts(),
-    const orders(),
-    const ProfileTab(),
-  ];
+  late AppLocalizations tr;
+
+  late HomeCubit cubit;
+
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size; ///comment check if it is the best way
-    return Scaffold(
-         body:Stack(
-             children:[
-               Padding(
-                 padding: const EdgeInsets.only(bottom: 68),
-                 child: screens[currentIndex],
-               ),
-               Align(
-                   alignment: Alignment.bottomCenter,
-                   child: buildCustomBottomNavBar(size))
-             ]
-         ),
-      );
+    final Size size = MediaQuery.of(context).size;
+    ///comment check if it is the best way
+    tr = AppLocalizations.of(context)!;
+    cubit = HomeCubit.get(context);
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) {
+        var cubit = HomeCubit.get(context);
+        return Scaffold(
+          body: Stack(children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 68),
+              child: cubit.screens[cubit.currentIndex],
+            ),
+            Align(
+                alignment: Alignment.bottomCenter,
+                child: buildCustomBottomNavBar())
+          ]),
+        );
+      },
+    );
   }
-  Widget buildCustomBottomNavBar(Size size) {
+
+  Widget buildCustomBottomNavBar() {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        ///design issue
-        // CustomPaint(
-        //   size: Size(size.width, 20),
-        //   painter: BABcustompainter(),
-        // ),
         Container(
           width: double.infinity,
           height: 90,
@@ -56,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
               image: AssetImage("assets/bottom_app_bar_bg.png"),
               fit: BoxFit.cover,
             ),
-          ) ,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -65,36 +56,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.only(bottom: 8),
                 child: BottomNavigationBar(
                   elevation: 0,
-                  currentIndex: currentIndex,
-                  onTap: (index) =>
-                      setState(() =>
-                   currentIndex = index),
+                  currentIndex: cubit.currentIndex,
+                  onTap: (index) => cubit.changeBottomNavBarIndex(index),
                   backgroundColor: Colors.transparent,
                   iconSize: 25,
                   selectedItemColor: AppColors.mainColor,
                   type: BottomNavigationBarType.fixed,
-                  items: const [
-                    BottomNavigationBarItem(icon: ImageIcon(
-                      AssetImage("assets/ic_home.png"),
-                    ), label: 'Home',
-                    ),
-                    BottomNavigationBarItem(
-                        icon: ImageIcon(
-                          AssetImage("assets/ic_services.png"),
-                        ), label: 'Services'),
-                    BottomNavigationBarItem(
-                        icon: ImageIcon(
-                          AssetImage("assets/ic_contracts.png"),
-                        ), label: 'My Contract'),
-                    BottomNavigationBarItem(
-                        icon: ImageIcon(
-                          AssetImage("assets/ic_orders.png"),
-                        ), label: 'My Orders'),
-                    BottomNavigationBarItem(
-                        icon: ImageIcon(
-                          AssetImage("assets/ic_profile.png"),
-                        ), label: 'Profile'),
-                  ],
+                  items: cubit.bottomNavBarItems(tr),
                 ),
               ),
             ],

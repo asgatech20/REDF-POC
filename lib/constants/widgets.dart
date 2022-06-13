@@ -10,14 +10,13 @@ Widget buildRectangularButton(BuildContext context, String text, IconData icon) 
     ElevatedButton.icon(
         style: ElevatedButton.styleFrom(
           primary: Colors.white,
-          padding: const EdgeInsets.only(left: 20),
+          padding: const EdgeInsets.only(left: 20,right: 20),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20)),
         ),
         label: Container(
-          alignment: Alignment.centerLeft,
+          alignment: AlignmentDirectional.centerStart,
           child: Text(text,
-            textAlign: TextAlign.left,
             style: const TextStyle(color: Colors.black54),
           ),
         ),

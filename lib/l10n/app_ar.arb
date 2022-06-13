@@ -1,0 +1,23 @@
+{
+  "changepassword":"تغيير كلمة السر",
+  "sendfeedback":"اراء و مقترحات",
+  "aboutapp":"عن التطبيق",
+  "callus":"تواصل معنا",
+  "language":"اللغة",
+  "signout":"تسجيل خروج",
+  "updateyourprofile":"تحديث بيانتك  >",
+  "home":"الرئيسية",
+  "myorders":"اوردراتي",
+  "mycontract":"تعاقداتي",
+  "services":"خدماتي",
+  "profile":"حسابي",
+  "arabic": "العربية",
+  "apptitle":"REDF",
+  "hello": "مرحبا ",
+  "loan": "#xxxxx - قرض مدعوم",
+  "installment": "الدفعة القادمة:",
+  "paynow": "ادفع الآن",
+  "forcolsuer": "احتجاز الرهن",
+  "yourorders": "اوردراتك",
+  "currency": "رس"
+}

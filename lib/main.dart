@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:redf/home/home_screen.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'bloc_observer.dart';
+import 'my_app.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    home: HomeScreen(),
-  ));
+  BlocOverrides.runZoned(
+    () {
+      runApp(const MyApp());
+    },
+    blocObserver: MyBlocObserver(),
+  );
 }
+
 ///you must split this file to 2 files
 /// main file should contain the launch of the app mustn't contain any app controller

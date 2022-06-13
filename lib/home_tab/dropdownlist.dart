@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:redf/constants/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DropDownList extends StatefulWidget {
   const DropDownList({Key? key}) : super(key: key);
@@ -10,7 +10,9 @@ class DropDownList extends StatefulWidget {
 }
 class _DropDownListState extends State<DropDownList> {
 
+
 String dropdownvalue = '#xxxxx - Sybsidized loan';
+
 var items = [
   '#xxxxx - Sybsidized loan',
   'payments',
@@ -18,11 +20,11 @@ var items = [
 ];
 String? value;
 
-  DropdownMenuItem <String> buildMenuItem(String item) => 
+  DropdownMenuItem <String> buildMenuItem(String item) =>
   DropdownMenuItem(
       value: item,
       child: Text(item,
-          style: TextStyle(fontSize: 20, color: Colors.white)
+          style: const TextStyle(fontSize: 20, color: Colors.white)
 
       )
   )
@@ -30,21 +32,22 @@ String? value;
 
   @override
   Widget build(BuildContext context) {
+    var tr = AppLocalizations.of(context)!;
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.0),
         color: AppColors.mainColorLight,
       ),
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 20),
+        margin: const EdgeInsets.symmetric(horizontal: 20),
 
         child: DropdownButton(
           dropdownColor: AppColors.mainColorLight,
 
 
-              underline: SizedBox(),
-              icon: Align(
+              underline: const SizedBox(),
+              icon: const Align(
                 alignment: Alignment.centerRight,
                   child: Icon(Icons.keyboard_arrow_down, color: Colors.white)),
 
@@ -63,8 +66,8 @@ String? value;
                   this.value= value as String?;
                 });
               },
-              hint: Text(
-                "#xxxxx - Sybsidized loan",
+              hint:  Text(
+                tr.loan,
                 style: TextStyle(fontSize: 20, color: Colors.white, )
               ),
             ),
