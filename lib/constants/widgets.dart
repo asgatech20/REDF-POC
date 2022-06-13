@@ -15,7 +15,7 @@ Widget buildRectangularButton(BuildContext context, String text, IconData icon) 
               borderRadius: BorderRadius.circular(20)),
         ),
         label: Container(
-          alignment: Alignment.centerLeft,
+          alignment: AlignmentDirectional.centerStart,
           child: Text(text,
             style: const TextStyle(color: Colors.black54),
           ),

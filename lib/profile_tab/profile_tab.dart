@@ -3,7 +3,7 @@ import 'package:provider/src/provider.dart';
 import 'package:redf/constants/app_colors.dart';
 import 'package:redf/constants/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:redf/cubit/language_cubit.dart';
+import 'package:redf/cubit/app_cubit.dart';
 
 import 'language_enum.dart';
 
@@ -80,11 +80,8 @@ class _ProfileTabState extends State<ProfileTab> {
                       // need constant file for strings , pass the action
                       Container(
                         margin: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
+                        width: MediaQuery.of(context).size.width,
                         height: 57,
-                        // width: MediaQuery
-                        //     .of(context)
-                        //     .size
-                        //     .width,
                         child: ElevatedButton.icon(
                             style: ElevatedButton.styleFrom(
                               primary: Colors.white,
@@ -93,9 +90,8 @@ class _ProfileTabState extends State<ProfileTab> {
                                   borderRadius: BorderRadius.circular(20)),
                             ),
                             label: Container(
-                              alignment: Alignment.centerLeft,
+                              alignment: AlignmentDirectional.centerStart,
                               child:  Text(tr.sendfeedback,
-                                textAlign: TextAlign.left,
                                 style: const TextStyle(color: Colors.black54),
                               ),
                             ),
@@ -138,7 +134,7 @@ class _ProfileTabState extends State<ProfileTab> {
                                     size: 24,
                                     color: AppColors.mainColor,
                                   ),
-                              Container(
+                               Container(
                                 margin: const EdgeInsets.only(left: 10,right: 10),
                                 child:  Text(
                                   tr.language,
@@ -152,8 +148,7 @@ class _ProfileTabState extends State<ProfileTab> {
                               ),
                             ),
                             Container(
-                               margin: const EdgeInsets.only(top: 55),
-                              padding: const EdgeInsets.symmetric(horizontal: 18),
+                               margin: const EdgeInsets.only(top: 55, right: 7,left: 17),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -183,7 +178,8 @@ class _ProfileTabState extends State<ProfileTab> {
                                     ),
                                     onPressed: () //async
                                          {
-                                           context.read<LanguageCubit>().changeLang(context, 'en');
+                                          // context.read<AppCubit>().changeTheme(false);
+                                           context.read<AppCubit>().changeLang(context, 'en');
                                     setState(() {
                                      selectedCategory = CategoryEnum.English;
                                      click = !click;
@@ -218,7 +214,8 @@ class _ProfileTabState extends State<ProfileTab> {
                                       ),
                                         onPressed: () //async
                                         {
-                                          context.read<LanguageCubit>().changeLang(context, 'ar');
+                                       //   context.read<AppCubit>().changeTheme(true);
+                                          context.read<AppCubit>().changeLang(context, 'ar');
                                           setState(() {
                                             selectedCategory = CategoryEnum.Arabic;
                                             click = !click;

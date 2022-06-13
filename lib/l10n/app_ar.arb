@@ -12,5 +12,12 @@
   "services":"خدماتي",
   "profile":"حسابي",
   "arabic": "العربية",
-  "apptitle":"REDF"
+  "apptitle":"REDF",
+  "hello": "مرحبا ",
+  "loan": "#xxxxx - قرض مدعوم",
+  "installment": "الدفعة القادمة:",
+  "paynow": "ادفع الآن",
+  "forcolsuer": "احتجاز الرهن",
+  "yourorders": "اوردراتك",
+  "currency": "رس"
 }

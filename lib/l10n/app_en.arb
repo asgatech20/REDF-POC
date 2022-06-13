@@ -13,5 +13,12 @@
    "profile":"Proflie",
    "english":"English",
    "arabic": "العربية",
-   "apptitle":"REDF"
+   "apptitle":"REDF",
+   "hello": "Hello ",
+   "loan": "#xxxxx - Sybsidized loan",
+   "installment": "Next Installment:",
+   "paynow": "Pay Now",
+   "forcolsuer" : "Foreclosure Service",
+   "yourorders": "Your Orders",
+   "currency": "SR"
 }

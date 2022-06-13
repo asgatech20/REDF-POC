@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redf/constants/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DropDownList extends StatefulWidget {
   const DropDownList({Key? key}) : super(key: key);
@@ -9,7 +10,9 @@ class DropDownList extends StatefulWidget {
 }
 class _DropDownListState extends State<DropDownList> {
 
+
 String dropdownvalue = '#xxxxx - Sybsidized loan';
+
 var items = [
   '#xxxxx - Sybsidized loan',
   'payments',
@@ -17,7 +20,7 @@ var items = [
 ];
 String? value;
 
-  DropdownMenuItem <String> buildMenuItem(String item) => 
+  DropdownMenuItem <String> buildMenuItem(String item) =>
   DropdownMenuItem(
       value: item,
       child: Text(item,
@@ -29,6 +32,7 @@ String? value;
 
   @override
   Widget build(BuildContext context) {
+    var tr = AppLocalizations.of(context)!;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
@@ -62,8 +66,8 @@ String? value;
                   this.value= value as String?;
                 });
               },
-              hint: const Text(
-                "#xxxxx - Sybsidized loan",
+              hint:  Text(
+                tr.loan,
                 style: TextStyle(fontSize: 20, color: Colors.white, )
               ),
             ),

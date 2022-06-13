@@ -1,7 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:redf/home_tab/home_tab.dart';
 import 'package:redf/profile_tab/profile_tab.dart';
